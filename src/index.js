@@ -15,7 +15,7 @@ const Theme = {
 menuContainer.insertAdjacentHTML('afterbegin', menuMarkup);
 
 
-
+localStorage.setItem('theme', Theme.LIGHT)
 
 function createMenuMarkup(menu) {
     return menu.map(templateFunction).join('')
