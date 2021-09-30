@@ -16,8 +16,9 @@ menuContainer.insertAdjacentHTML('afterbegin', menuMarkup);
 
 
 // localStorage.setItem('theme', Theme.LIGHT);
-bodyTheme.classList.add(Theme.LIGHT);
+// bodyTheme.classList.add(localStorage.getItem('theme'));
 
+localStorage.setItem('theme', (localStorage.getItem('theme')==null?Theme.LIGHT:localStorage.getItem('theme')));
 function createMenuMarkup(menu) {
     return menu.map(templateFunction).join('')
 };
@@ -25,8 +26,10 @@ function createMenuMarkup(menu) {
 themeSwitcher.addEventListener('change', themeToggle);
 function themeToggle(params) {
   if (params.target.checked) {
-    return localStorage.setItem('theme', Theme.DARK), bodyTheme.classList.replace(Theme.LIGHT, Theme.DARK);    
-  } bodyTheme.classList.replace(Theme.DARK, Theme.LIGHT), localStorage.setItem('theme', Theme.LIGHT);
+    return localStorage.setItem('theme', Theme.DARK),
+     bodyTheme.classList.replace(Theme.LIGHT, Theme.DARK);    
+  } bodyTheme.classList.replace(Theme.DARK, Theme.LIGHT),
+   localStorage.setItem('theme', Theme.LIGHT);
 };
 
 function checkBoxTracking(e) {
@@ -37,4 +40,4 @@ function checkBoxTracking(e) {
 bodyTheme.classList.add(localStorage.getItem('theme'));
 
 
-document.addEventListener("DOMContentLoaded", checkBoxTracking)
+document.addEventListener("DOMContentLoaded", checkBoxTracking);
